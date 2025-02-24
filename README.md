@@ -31,8 +31,8 @@ We directly read the UCR dataset through the interface of the aeon library.
 UCR dataset(https://www.cs.ucr.edu/~eamonn/time_series_data_2018/)
 
 
-## General Example
-Four datasets 'coil100'， 'Wafer' ， 'mixed_sinx' and 'gaussin' are provided. Just run 'main.py'
+
+
 
 **Requirements**: NumPy, scipy, matplotlib, aeon, sklearn, numba, pandas, pymetis, random, sktime
 
@@ -45,8 +45,11 @@ We extend our gratitude to the authors of R-Clustering[1] and MiniROCKET[2] for 
 Thanks to the authors of aeon[3] and sktime[4] for providing such excellent libraries!
 
 [1] Jorge M B, Rubén C. Time series clustering with random convolutional kernels[J]. Data Mining and Knowledge Discovery, 2024, 38(4): 1862-1888.
+
 [2] Dempster A, Schmidt D F, Webb G I. Minirocket: A very fast (almost) deterministic transform for time series classification[C]//Proceedings of the 27th ACM SIGKDD conference on knowledge discovery & data mining. 2021: 248-257.
+
 [3] Middlehurst M, Ismail-Fawaz A, Guillaume A, et al. aeon: a Python toolkit for learning from time series[J]. Journal of Machine Learning Research, 2024, 25(289): 1-10.
+
 [4] Löning M, Bagnall A, Ganesh S, et al. sktime: A unified interface for machine learning with time series[J]. arXiv preprint arXiv:1909.07872, 2019.
 
 
