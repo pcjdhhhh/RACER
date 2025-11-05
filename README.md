@@ -1,6 +1,5 @@
 # RACER: Fast and Accurate Time Series Clustering with Random Convolutional Kernels and Ensemble Methods
-This repository is the official implementation of [RACER: Fast and Accurate Time Series Clustering with Random Convolutional Kernels and Ensemble Methods], 
-submitted to ECML-PKDD 2025  (Under Review)
+This repository is the official implementation of [RACER: Fast and Accurate Time Series Clustering with Random Convolutional Kernels and Ensemble Methods]
 
 ## The overall execution process of applying the RACER algorithm to time series clustering.
 
