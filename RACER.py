@@ -18,6 +18,7 @@ from numba import njit, prange, vectorize
 import pymetis
 import random
 import time
+import umap
 
 warnings.filterwarnings("ignore")
 
@@ -399,7 +400,7 @@ num_features = 500
 # Initialize a list to store the results
 results_list = []
 
-DR_method = {'pca':PCA,'TSNE':TSNE}
+DR_method = {'pca':PCA,'umap':umap}
 Classification_method = {'KMeans':KMeans,'AgglomerativeClustering':AgglomerativeClustering,'GaussianMixture':GaussianMixture}
 
 
@@ -410,9 +411,9 @@ res_dict = {'datasets':validation_datasets,
             'pca+KMeans':np.zeros([repeat_times,num_of_datasets]),
             'pca+AgglomerativeClustering':np.zeros([repeat_times,num_of_datasets]),
             'pca+GaussianMixture':np.zeros([repeat_times,num_of_datasets]),
-            'TSNE+KMeans':np.zeros([repeat_times,num_of_datasets]),
-            'TSNE+AgglomerativeClustering':np.zeros([repeat_times,num_of_datasets]),
-            'TSNE+GaussianMixture':np.zeros([repeat_times,num_of_datasets]),
+            'umap+KMeans':np.zeros([repeat_times,num_of_datasets]),
+            'umap+AgglomerativeClustering':np.zeros([repeat_times,num_of_datasets]),
+            'umap+GaussianMixture':np.zeros([repeat_times,num_of_datasets]),
             'ensemble':np.zeros([repeat_times,num_of_datasets])}
 
 for _time in range(repeat_times):
@@ -455,17 +456,17 @@ for _time in range(repeat_times):
                     res_dict[DR_name + '+' + C_name][_time,i] = score
                     print(str_info + " ARI: ", score)
                     print("\n")
-            elif DR_name == 'TSNE':
-                tsne = TSNE(n_components=3)
-                X_tsne = tsne.fit_transform(X_std)
+            elif DR_name == 'umap':
+                reducer = umap.UMAP(n_components=10, random_state=42)
+                X_umap = reducer.fit_transform(X_std)
                 for C_name,C_way in Classification_method.items():
                     str_info = DR_name + ' ' + C_name + ': '
                     if C_name=='KMeans':
-                        labels_pred = C_way(n_clusters=num_clusters, n_init=10).fit_predict(X_tsne)
+                        labels_pred = C_way(n_clusters=num_clusters, n_init=10).fit_predict(X_umap)
                     elif C_name=='AgglomerativeClustering':
-                        labels_pred = C_way(n_clusters=num_clusters).fit_predict(X_tsne)
+                        labels_pred = C_way(n_clusters=num_clusters).fit_predict(X_umap)
                     else:
-                        labels_pred = C_way(n_components=num_clusters).fit_predict(X_tsne)
+                        labels_pred = C_way(n_components=num_clusters).fit_predict(X_umap)
                     clustering_results[DR_name + '+' + C_name] = labels_pred
                     cluster_list.append(labels_pred)
                     score = metrics.adjusted_rand_score(labels_true=Y, labels_pred=labels_pred)
