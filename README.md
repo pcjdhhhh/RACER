@@ -5,13 +5,13 @@ This repository is the official implementation of [RACER: Fast and Accurate Time
 
 ![The overall execution process of applying the RACER algorithm to time series clustering](framework.jpg) 
 
-## Main Results: Critical difference diagrams for all methods on UCR archive.
+## Main Results: Critical difference diagrams for all methods on UCR archive. The latest experimental results can be found in the published paper, as the results presented here are outdated.
 
 
 ![Critical difference diagrams for all methods on UCR archive.](ARI_CD.png) 
 
 
-## Main Results: The average ARI value of each algorithm across the datasets used.
+## Main Results: The average ARI value of each algorithm across the datasets used. The latest experimental results can be found in the published paper, as the results presented here are outdated.
 
 
 ![The average ARI value of each algorithm across the datasets used.](average_ARI.jpg) 
